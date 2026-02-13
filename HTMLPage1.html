@@ -1,0 +1,720 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>ArknX – All-in-One Services App</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <!-- Bootstrap -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/css/bootstrap.min.css" rel="stylesheet">
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <!-- FontAwesome Icons -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.0/css/all.min.css">
+
+  <style>
+    body {
+      font-family: 'Poppins', sans-serif;
+      scroll-behavior: smooth;
+    }
+
+    /* BRAND COLORS */
+    :root {
+      --primary: #0d6efd;
+      --secondary: #6610f2;
+      --dark: #212529;
+    }
+
+    /* HERO */
+    .hero {
+      position: relative;
+      min-height: 100vh;
+      background: url("assets/images/hero-collage.png") center/cover no-repeat;
+      color: white;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 80px 15px;
+    }
+
+    .hero::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.6);
+    }
+
+    .hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 900px;
+    }
+
+    .hero h1 {
+      color: #fff !important;
+      background: none;
+      -webkit-background-clip: unset;
+      -webkit-text-fill-color: unset;
+    }
+
+    .hero p {
+      color: #fff;
+    }
+
+    /* SECTION TITLES */
+    .section-title {
+      font-weight: 700;
+      margin-bottom: 40px;
+      color: var(--primary);
+    }
+
+    /* VALUE BOX */
+    .value-box {
+      background: #fff;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+      height: 100%;
+      transition: transform .3s;
+    }
+
+    .value-box:hover {
+      transform: translateY(-8px);
+    }
+
+    .value-box h5 {
+      color: var(--secondary);
+      font-weight: 600;
+    }
+
+    /* SERVICE CARDS */
+    .service-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      text-align: center;
+    }
+
+    .service-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .service-card h5 {
+      color: var(--primary);
+      font-weight: 600;
+    }
+
+    .service-card img {
+      height: 180px;
+      width: 100%;
+      object-fit: cover;
+      border-radius: 10px;
+    }
+
+    /* OUR APPS SECTION */
+    .app-card {
+      background: #fff;
+      padding: 20px;
+      border-radius: 18px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      height: 100%;
+      text-align: center;
+    }
+
+    .app-card:hover {
+      transform: translateY(-10px);
+      box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+    }
+
+    .app-card img {
+      height: 180px;
+      width: 100%;
+      object-fit: contain;
+      border-radius: 15px;
+    }
+
+    .app-card h4 {
+      margin-top: 20px;
+      font-weight: 700;
+      color: #6610f2;
+    }
+
+    .app-card h6 {
+      font-weight: 600;
+      margin-bottom: 15px;
+      color: #212529;
+    }
+
+    .app-card ul {
+      text-align: left;
+      padding-left: 18px;
+    }
+
+    footer {
+      background: #000;
+      color: #fff;
+      padding: 15px 0;
+    }
+
+
+    /* CONTACT US SECTION (Same as PNGC) */
+    .contact-section {
+      background: #071a2d;
+      padding: 80px 0;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    .container-contact {
+      width: 90%;
+      max-width: 1200px;
+      margin: auto;
+      text-align: center;
+    }
+
+    .contact-title {
+      color: white;
+      font-size: 48px;
+      font-weight: 700;
+      margin-bottom: 10px;
+      text-transform: capitalize;
+    }
+
+    .contact-line {
+      width: 180px;
+      height: 2px;
+      background: #0d6efd;
+      margin: auto;
+      margin-bottom: 60px;
+    }
+
+    .contact-wrapper {
+      display: flex;
+      gap: 40px;
+      justify-content: center;
+      align-items: flex-start;
+      flex-wrap: wrap;
+    }
+
+    /* LEFT FORM */
+    .contact-form {
+      flex: 1;
+      min-width: 550px;
+    }
+
+    .row-inputs {
+      display: flex;
+      gap: 20px;
+      margin-bottom: 20px;
+    }
+
+    .input-box {
+      width: 100%;
+      padding: 18px 25px;
+      border-radius: 40px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      background: white;
+    }
+
+    .full-width {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+
+    .textarea-box {
+      width: 100%;
+      height: 180px;
+      padding: 20px 25px;
+      border-radius: 25px;
+      border: none;
+      outline: none;
+      font-size: 16px;
+      resize: none;
+      margin-bottom: 25px;
+    }
+
+    .submit-btn {
+      width: 100%;
+      padding: 16px;
+      border: none;
+      border-radius: 40px;
+      font-size: 18px;
+      font-weight: 600;
+      color: white;
+      background: linear-gradient(to right, #4facfe, #8f5eff);
+      cursor: pointer;
+      transition: 0.3s ease;
+    }
+
+    .submit-btn:hover {
+      opacity: 0.9;
+    }
+
+    /* RIGHT INFO BOX */
+    .contact-info-box {
+      flex: 0.8;
+      min-width: 400px;
+      padding: 35px;
+      border-radius: 18px;
+      background: linear-gradient(to bottom right, #4facfe, #8f5eff);
+      color: white;
+      text-align: left;
+    }
+
+    .info-item {
+      display: flex;
+      gap: 18px;
+      margin-bottom: 35px;
+      align-items: flex-start;
+    }
+
+    .info-icon {
+      font-size: 22px;
+      margin-top: 5px;
+    }
+
+    .info-text h4 {
+      font-size: 16px;
+      font-weight: 700;
+      margin: 0;
+      margin-bottom: 8px;
+      text-transform: uppercase;
+    }
+
+    .info-text p {
+      margin: 0;
+      font-size: 14px;
+      line-height: 1.7;
+      font-weight: 500;
+    }
+
+    /* RESPONSIVE */
+    @media (max-width: 992px) {
+      .contact-form {
+        min-width: 100%;
+      }
+
+      .contact-info-box {
+        min-width: 100%;
+      }
+
+      .row-inputs {
+        flex-direction: column;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- NAVBAR -->
+  <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top shadow">
+    <div class="container">
+      <img src="assets/images/logo.png" alt="ArknX Logo" height="40">
+
+      <a class="navbar-brand fw-bold text-primary ms-2" href="#home">ArknX</a>
+
+      <button class="navbar-toggler" data-bs-toggle="collapse" data-bs-target="#menu">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="menu">
+        <ul class="navbar-nav ms-auto">
+          <li class="nav-item"><a class="nav-link" href="#home">Home</a></li>
+          <li class="nav-item"><a class="nav-link" href="#about">About</a></li>
+          <li class="nav-item"><a class="nav-link" href="#vision-mission">Vision & Mission</a></li>
+          <li class="nav-item"><a class="nav-link" href="#why">Why Us</a></li>
+          <li class="nav-item"><a class="nav-link" href="#our-apps">Our Apps</a></li>
+          <li class="nav-item"><a class="nav-link" href="#services">Services</a></li>
+          <li class="nav-item"><a class="nav-link" href="#contact">Contact</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- HERO -->
+  <section id="home" class="hero">
+    <div class="hero-content" data-aos="fade-up">
+      <h1 class="display-4 fw-bold">One App. Every Service.</h1>
+      <p class="lead mt-3">
+        From groceries to parking — everything you need, just one tap away.
+      </p>
+      <a href="#services" class="btn btn-primary btn-lg mt-4">Explore Services</a>
+    </div>
+  </section>
+
+  <!-- ABOUT -->
+  <section id="about" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center">About ArknX</h2>
+      <p class="text-center">
+        We believe in the power of innovation to transform everyday experiences.
+        Our technology platform seamlessly integrates various services under one umbrella,
+        offering our users the flexibility to access them anytime, anywhere.
+        Whether you need food delivery, ride-sharing, logistics support, or grocery delivery,
+        our platform offers a unified solution designed to make life easier.
+      </p>
+
+      <p class="text-center">
+        Through our platform, customers can experience a frictionless end-to-end (E2E)
+        booking process for all types of services and vehicle partnerships.
+        This holistic approach ensures that every touchpoint — whether booking, payment,
+        delivery, or support — is easy and intuitive, removing the barriers traditionally
+        associated with these services.
+      </p>
+    </div>
+  </section>
+
+  <!-- VISION & MISSION -->
+  <section id="vision-mission" class="py-5 bg-light">
+    <div class="container">
+      <div class="row g-5">
+
+        <div class="col-md-6" data-aos="fade-right">
+          <div class="value-box">
+            <h3 class="fw-bold text-primary mb-3">Our Vision</h3>
+            <p>
+              We envision a future where innovation and connectivity empower individuals,
+              simplifying access to essential services, eliminating barriers, and transforming
+              convenience into an effortless, technology-driven lifestyle.
+            </p>
+          </div>
+        </div>
+
+        <div class="col-md-6" data-aos="fade-left">
+          <div class="value-box">
+            <h3 class="fw-bold text-primary mb-3">Our Mission</h3>
+            <p>
+              Empowering the future through innovation, seamless connectivity, and unmatched
+              convenience, we enhance lives by unifying essential services into one powerful,
+              time-saving platform for all.
+            </p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- WHY US -->
+  <section id="why" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center">Why ArknX?</h2>
+      <div class="row g-4">
+
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="value-box text-center">
+            <h5>All-in-One Platform</h5>
+            <p>Access multiple services using a single login and interface.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="value-box text-center">
+            <h5>Secure & Reliable</h5>
+            <p>OTP-based authentication and controlled access ensure safety.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="value-box text-center">
+            <h5>Scalable Architecture</h5>
+            <p>Designed to grow with new services and smart-city needs.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="value-box text-center">
+            <h5>User, Vendor & Admin Friendly</h5>
+            <p>Dedicated modules for all stakeholders.</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="value-box text-center">
+            <h5>Real-World Problem Solving</h5>
+            <p>Reduces app overload, improves service accessibility and saves time</p>
+          </div>
+        </div>
+
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="value-box text-center">
+            <h5>Local Business Empowerment</h5>
+            <p>Supports local vendors by bringing services online and connecting them directly with customers</p>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- OUR APPS -->
+  <section id="our-apps" class="py-5 bg-light">
+    <div class="container">
+      <h2 class="section-title text-center">Our Apps</h2>
+      <p class="text-center mb-5">
+        Three powerful apps tailored for every need.
+      </p>
+
+      <div class="row g-4">
+
+        <!-- Vendor App -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="app-card">
+            <img src="assets/images/vendor-app.png" alt="Vendor App">
+            <h4>Vendor App</h4>
+            <h6>For Business Owners</h6>
+            <ul>
+              <li>Easily manage orders and inventory</li>
+              <li>Track sales and performance</li>
+              <li>Grow your business online</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Consumer App -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="app-card">
+            <img src="assets/images/consumer-app.png" alt="Consumer App">
+            <h4>Consumer App</h4>
+            <h6>For Customers</h6>
+            <ul>
+              <li>Book services quickly</li>
+              <li>Get instant updates</li>
+              <li>Enjoy seamless and secure payments</li>
+            </ul>
+          </div>
+        </div>
+
+        <!-- Rider App -->
+        <div class="col-md-4" data-aos="fade-up">
+          <div class="app-card">
+            <img src="assets/images/rider-app.png" alt="Rider App">
+            <h4>Rider App</h4>
+            <h6>For Delivery Partners</h6>
+            <ul>
+              <li>Get new delivery tasks</li>
+              <li>Navigate easily with GPS</li>
+              <li>Earn more with flexible schedules</li>
+            </ul>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+  <!-- SERVICES -->
+  <section id="services" class="py-5">
+    <div class="container">
+      <h2 class="section-title text-center">Our Services</h2>
+      <p class="text-center mb-5">
+        Everything you need — delivered through one powerful platform.
+      </p>
+
+      <div class="row g-4">
+        <!-- Food -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/food.jpg" alt="Food Delivery">
+            <h5 class="mt-3">Food Delivery</h5>
+            <p>Order delicious food from nearby restaurants with fast delivery.</p>
+          </div>
+        </div>
+
+        <!-- Grocery -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/grocery.jpg" alt="Grocery Delivery">
+            <h5 class="mt-3">Grocery Delivery</h5>
+            <p>Daily essentials delivered straight to your doorstep.</p>
+          </div>
+        </div>
+
+        <!-- Pharmacy -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/pharmacy.jpg" alt="Pharmacy">
+            <h5 class="mt-3">Pharmacy</h5>
+            <p>Safe, secure, and reliable medicine delivery service.</p>
+          </div>
+        </div>
+
+        <!-- Taxi -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/taxi.jpg" alt="Taxi Booking">
+            <h5 class="mt-3">Taxi Booking</h5>
+            <p>Book rides easily for travel, emergencies, and daily commute.</p>
+          </div>
+        </div>
+
+        <!-- Logistics -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/logistics.jpg" alt="Logistics">
+            <h5 class="mt-3">Logistics</h5>
+            <p>Parcel booking, courier services, and real-time tracking.</p>
+          </div>
+        </div>
+
+        <!-- Photography -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/photography.jpg" alt="Photography">
+            <h5 class="mt-3">Photo & Video</h5>
+            <p>Book professional photographers and videographers for events.</p>
+          </div>
+        </div>
+
+        <!-- Event Decor -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/decor.jpg" alt="Event Decor">
+            <h5 class="mt-3">Event & Decor</h5>
+            <p>Decoration services for birthdays, weddings, and celebrations.</p>
+          </div>
+        </div>
+
+        <!-- Book Space -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/party.jpg" alt="Book Space">
+            <h5 class="mt-3">Book Space</h5>
+            <p>Convention halls, banquet halls, and auditoriums.</p>
+          </div>
+        </div>
+
+        <!-- Soyo -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/soyo.jpg" alt="Soyo">
+            <h5 class="mt-3">Soyo</h5>
+            <p>Pubs, parties, lodges, homestays, and leisure bookings.</p>
+          </div>
+        </div>
+
+        <!-- Agri Tech -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/farm.jpg" alt="Agri Tech">
+            <h5 class="mt-3">Agri Tech</h5>
+            <p>Smart agriculture solutions supporting farmers and technology.</p>
+          </div>
+        </div>
+
+        <!-- Parking -->
+        <div class="col-md-4 col-sm-6" data-aos="fade-up">
+          <div class="service-card">
+            <img src="assets/images/parking.jpg" alt="Parking Slot">
+            <h5 class="mt-3">Parking Slot</h5>
+            <p>Find and book parking spaces easily in busy areas.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- CONTACT US (Same as PNGC) -->
+  <section class="contact-section" id="contact">
+    <div class="container-contact">
+      <h2 class="contact-title">Contact us</h2>
+      <div class="contact-line"></div>
+
+      <div class="contact-wrapper">
+
+        <!-- LEFT FORM -->
+        <div class="contact-form">
+          <div class="row-inputs">
+            <input type="text" placeholder="Full Name" class="input-box">
+            <input type="email" placeholder="Email" class="input-box">
+          </div>
+
+          <input type="text" placeholder="Subject" class="input-box full-width">
+
+          <textarea placeholder="Message" class="textarea-box"></textarea>
+
+          <button class="submit-btn">SUBMIT</button>
+        </div>
+
+        <!-- RIGHT INFO BOX -->
+        <div class="contact-info-box">
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-location-dot"></i>
+            </div>
+            <div class="info-text">
+              <h4>ADDRESS</h4>
+              <p>
+                <!-- YOU CAN EDIT THIS CONTENT -->
+                #16, 22nd Main E cross, JC Nagar <br>
+                K<br>
+                YOUR ADDRESS LINE 3 <br>
+                CITY - PINCODE
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-envelope"></i>
+            </div>
+            <div class="info-text">
+              <h4>E-MAIL</h4>
+              <p>
+                <!-- YOU CAN EDIT THIS CONTENT -->
+                YOURMAIL@DOMAIN.COM
+              </p>
+            </div>
+          </div>
+
+          <div class="info-item">
+            <div class="info-icon">
+              <i class="fa-solid fa-clock"></i>
+            </div>
+            <div class="info-text">
+              <h4>WORKING HOURS</h4>
+              <p>
+                <!-- YOU CAN EDIT THIS CONTENT -->
+                MON-SAT 9.00 AM TO 5.00 PM
+              </p>
+            </div>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </section>
+
+
+  <!-- FOOTER -->
+  <footer class="text-center">
+    © 2026 ArknX | One App. Every Service.
+  </footer>
+
+  <!-- JS -->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.2/dist/js/bootstrap.bundle.min.js"></script>
+  <script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+  <script>
+    AOS.init({ duration: 1000, once: true });
+  </script>
+
+</body>
+
+</html>
